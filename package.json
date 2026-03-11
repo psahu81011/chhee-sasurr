@@ -1,0 +1,76 @@
+{
+  "name": "chhee-sasurr",
+  "displayName": "chhee-sasurr",
+  "description": "Plays audio on terminal exit",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chhee-sasurr.toggleSound",
+        "title": "Chhee-sasurr: Toggle Sound",
+        "category": "Chhee-sasurr"
+      }
+    ],
+    "configuration": {
+      "title": "Chhee Sasurr Settings",
+      "properties": {
+        "chhee-sasurr.enableSound": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable sound playback on terminal exit."
+        },
+        "chhee-sasurr.enableSuccessSound": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable sound playback when terminal commands succeed."
+        },
+        "chhee-sasurr.successSound": {
+          "type": "string",
+          "default": "assets/success.mp3",
+          "description": "Path to the sound file played on success."
+        },
+        "chhee-sasurr.failureSound": {
+          "type": "string",
+          "default": "assets/failure.mp3",
+          "description": "Path to the sound file played on failure."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.56.1",
+    "eslint": "^9.39.3",
+    "esbuild": "^0.27.3",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
