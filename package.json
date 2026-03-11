@@ -3,6 +3,10 @@
   "displayName": "chhee-sasurr",
   "description": "Plays audio on terminal exit",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psahu81011/chhee-sasurr"
+  },
   "engines": {
     "vscode": "^1.109.0"
   },
